@@ -157,8 +157,10 @@ export const base44 = {
   auth: authAPI,
 };
 
-// Initialize with sample data if empty
-if (storage.getCollection('AnimeMoment').length === 0) {
+// Initialize with sample data - always reset to ensure fresh data
+if (storage.getCollection('AnimeMoment').length < 18) {
+  // Clear existing data and reload fresh moments
+  storage.data.AnimeMoment = [];
   const sampleMoments = [
     {
       id: '1',
